@@ -239,40 +239,8 @@ $total = $subtotal + $shipping;
     </main>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        fetch('../php/check_session.php')
-                .then(response => response.json())
-                .then(data => {
-                    const profileContent = document.getElementById('profileContent');
-                    if (data.loggedIn) {
-                        profileContent.innerHTML = `
-                            <li><span class="dropdown-item-text">Hi, ${data.fullname}</span></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li class="nav-item">
-                              <a class="nav-link position-relative" href="cart.php">
-                                <i class="fas fa-shopping-cart"></i> Cart
-                                <?php if ($cartCount > 0): ?>
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        <?php echo $cartCount; ?>
-                                        <span class="visually-hidden">items in cart</span>
-                                    </span>
-                                <?php endif; ?>
-                              </a>
-                            </li>
-                            <li><a class="dropdown-item" href="../users/profile.php"><i class="fas fa-user-circle"></i> My Profile</a></li>
-                            <li><a class="dropdown-item" href="checkout.php"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                        `;
-                    } else {
-                        profileContent.innerHTML = `
-                            <li><a class="dropdown-item" href="../users/login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                            <li><a class="dropdown-item" href="../users/register.php"><i class="fas fa-user-plus"></i> Register</a></li>
-                        `;
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-
         document.addEventListener('DOMContentLoaded', function() {
             // Quantity
             document.querySelectorAll('.quantity-decrease, .quantity-increase').forEach(button => {
@@ -345,8 +313,7 @@ $total = $subtotal + $shipping;
 
             updateCheckoutButton();
         });
-    </script>
-    <script>
+
         document.addEventListener('DOMContentLoaded', function() {
                fetch('../php/check_session.php')
                 .then(response => response.json())
@@ -356,17 +323,6 @@ $total = $subtotal + $shipping;
                         profileContent.innerHTML = `
                             <li><span class="dropdown-item-text">Hi, ${data.fullname}</span></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li class="nav-item">
-                              <a class="nav-link position-relative" href="../shop/cart.php">
-                                <i class="fas fa-shopping-cart"></i> Cart
-                                <?php if ($cartCount > 0): ?>
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        <?php echo $cartCount; ?>
-                                        <span class="visually-hidden">items in cart</span>
-                                    </span>
-                                <?php endif; ?>
-                              </a>
-                            </li>
                             <li><a class="dropdown-item" href="../users/profile.php"><i class="fas fa-user-circle"></i> My Profile</a></li>
                             <li><a class="dropdown-item" href="../shop/orders.php"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -381,8 +337,6 @@ $total = $subtotal + $shipping;
                 })
                 .catch(error => console.error('Error:', error));
         });
-
-        
-      </script>
+      </script> 
 </body>
 </html>

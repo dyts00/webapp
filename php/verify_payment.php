@@ -11,7 +11,7 @@ if (!$source_id) {
 
 $client = new Client([
     'base_uri' => 'https://api.paymongo.com/v1/',
-    'auth' => ['sk_test_H9KjUA3SKLYKWwkWBtjVf8pv', ''],
+    'auth' => ['STRIPE_SECRET_KEY', ''],
 ]);
 
 try {

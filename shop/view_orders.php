@@ -26,52 +26,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <body>
-<nav id="navScroll" class="navbar navbar-expand-lg navbar-light fixed-top" aria-label="Main navigation">
-      <div class="container">
-        <a class="navbar-brand pe-4 fs-4" href="../index.php">
-          <img src="../favicon/favicon.ico" alt="Skye Logo" style="height:40px; width:auto; vertical-align:middle; margin-right:8px;">
-          <span class="ms-1 fw-bolder">Skye Blinds Interior Design Services</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="../index.php#gallery">Gallery</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#products" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Products
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-                    <li><a class="dropdown-item" href="productsdetail.php">Product Details</a></li>
-                    <li><a class="dropdown-item" href="products.php">Product Listing</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../index.php#services">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../index.php#about">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../users/contact.php">Contact</a>
-                </li>
-            </ul>
-            <div class="nav-item dropdown">
-                <a href="#" class="profile-icon" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end profile-menu" aria-labelledby="profileDropdown">
-                    <div id="profileContent">
-                        <!-- Content will be populated by JavaScript -->
-                    </div>
-                </ul>
-            </div>
-        </div>
-      </div>
-    </nav>
+
 
     <main class="container py-5" style="margin-top: 60px;">
         <h2 class="mb-4">Order Details</h2>
@@ -230,5 +185,31 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </main>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+               fetch('../php/check_session.php')
+                .then(response => response.json())
+                .then(data => {
+                    const profileContent = document.getElementById('profileContent');
+                    if (data.loggedIn) {
+                        profileContent.innerHTML = `
+                            <li><span class="dropdown-item-text">Hi, ${data.fullname}</span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../users/profile.php"><i class="fas fa-user-circle"></i> My Profile</a></li>
+                            <li><a class="dropdown-item" href="../shop/orders.php"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../php/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        `;
+                    } else {
+                        profileContent.innerHTML = `
+                            <li><a class="dropdown-item" href="../users/login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                            <li><a class="dropdown-item" href="../users/register.php"><i class="fas fa-user-plus"></i> Register</a></li>
+                        `;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        
+      </script>
 </body>
