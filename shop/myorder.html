@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/card.css">
+    <title>My Orders</title>
+    <style>
+        body { background: #f7f8fa; }
+        .order-sidebar { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .order-details { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .order-status { font-size: 0.95em; }
+        .order-history-list { max-height: 420px; overflow-y: auto; }
+        .order-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; }
+        .order-item-row { border-bottom: 1px solid #f0f0f0; padding: 12px 0; }
+        .order-item-row:last-child { border-bottom: none; }
+        .order-action-btn { margin-right: 8px; }
+        .tab-content { padding-top: 24px; }
+        .order-meta { color: #888; font-size: 0.95em; }
+        .order-amount { font-weight: bold; }
+        .order-status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .status-inprogress { background: #007bff; }
+        .status-delivered { background: #28a745; }
+        .status-cancelled { background: #dc3545; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="col-md-12">
+                <h1>My Orders</h1>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <div class="row">
+                <nav>
+                    <h2>Orders</h2></l1>
+                    <h2>Shipping</li>    
+                </nav>
+                <!-- Sidebar: Orders History -->
+                <aside class="col-md-4 mb-4">
+                    <div class="order-sidebar p-4">
+                        <h5 class="mb-3">Orders History</h5>
+                        <div class="order-history-list">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="#" class="fw-bold">#481293</a>
+                                        <div class="order-meta">USD $9,820.00</div>
+                                    </div>
+                                    <span class="order-status"><span class="order-status-dot status-inprogress"></span>In Progress</span>
+                                </div>
+                                <div class="order-meta">4 items</div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="#" class="fw-bold">#541299</a>
+                                        <div class="order-meta">USD $11,250.00</div>
+                                    </div>
+                                    <span class="order-status"><span class="order-status-dot status-inprogress"></span>In Progress</span>
+                                </div>
+                                <div class="order-meta">5 items</div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="#" class="fw-bold">#481282</a>
+                                        <div class="order-meta">USD $9,820.00</div>
+                                    </div>
+                                    <span class="order-status"><span class="order-status-dot status-delivered"></span>Delivered</span>
+                                </div>
+                                <div class="order-meta">4 items</div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="#" class="fw-bold">#581322</a>
+                                        <div class="order-meta">USD $6,200.00</div>
+                                    </div>
+                                    <span class="order-status"><span class="order-status-dot status-delivered"></span>Delivered</span>
+                                </div>
+                                <div class="order-meta">2 items</div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="#" class="fw-bold">#832187</a>
+                                        <div class="order-meta">USD $12,430.00</div>
+                                    </div>
+                                    <span class="order-status"><span class="order-status-dot status-cancelled"></span>Cancelled</span>
+                                </div>
+                                <div class="order-meta">12 items</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h6>Order Details</h6>
+                            <div class="order-meta">Phone Number</div>
+                            <div class="order-meta">Delivery Address</div>
+                            <div class="order-meta">Declaration Number</div>
+                            <div class="order-meta">Invoice</div>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Main Content: Order Details -->
+                <section class="col-md-8">
+                    <div class="order-details p-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h4 class="mb-0">Order #481293</h4>
+                                <div class="order-meta">Order Date: 2023-07-21</div>
+                                <div class="order-meta">Status: <span class="order-status-dot status-inprogress"></span>In Progress</div>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-secondary order-action-btn">Need Help?</button>
+                                <button class="btn btn-outline-primary">Download Invoice</button>
+                            </div>
+                        </div>
+                        <ul class="nav nav-tabs" id="orderTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab">Orders</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="returns-tab" data-bs-toggle="tab" data-bs-target="#returns" type="button" role="tab">Returns</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="orderTabsContent">
+                            <div class="tab-pane fade show active" id="orders" role="tabpanel">
+                                <!-- Order Items List -->
+                                <div class="order-item-row d-flex align-items-center">
+                                    <img src="../images/products/68124eb474c85.jpg" class="order-item-img me-3" alt="Product">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">Valentino</div>
+                                        <div class="order-meta">Color: Black | Size: S</div>
+                                    </div>
+                                    <div class="order-amount">$1,788</div>
+                                </div>
+                                <div class="order-item-row d-flex align-items-center">
+                                    <img src="../images/products/6820c9bc68be7.jpg" class="order-item-img me-3" alt="Product">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">Alexander McQueen</div>
+                                        <div class="order-meta">Color: Beige | Size: 36</div>
+                                    </div>
+                                    <div class="order-amount">$720</div>
+                                </div>
+                                <div class="order-item-row d-flex align-items-center">
+                                    <img src="../images/products/68124eb474c85.jpg" class="order-item-img me-3" alt="Product">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">Versace</div>
+                                        <div class="order-meta">Color: Brown</div>
+                                    </div>
+                                    <div class="order-amount">$2,760</div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="returns" role="tabpanel">
+                                <div class="text-center text-muted py-5">No returns for this order.</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="order-meta">Shipping from: United States</div>
+                                <div class="order-meta">Estimated Delivery: Jul 24, 2023 at 3:30 PM</div>
+                            </div>
+                            <div class="order-amount fs-5">Total: $9,820.00</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
