@@ -14,7 +14,7 @@ $redirect_url = 'https://yourdomain.com/shop/order_confirmed.php?order_id=' . ur
 
 $client = new Client([
     'base_uri' => 'https://api.paymongo.com/v1/',
-    'auth' => ['sk_test_H9KjUA3SKLYKWwkWBtjVf8pv', ''], // Replace with your PayMongo secret key
+    'auth' => ['STRIPE_SECRET_KEY', ''], // Replace with your PayMongo secret key
 ]);
 
 try {
